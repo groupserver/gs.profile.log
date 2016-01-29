@@ -14,7 +14,6 @@
 ############################################################################
 import codecs
 import os
-import sys
 from setuptools import setup, find_packages
 from version import get_version
 
@@ -29,8 +28,11 @@ with codecs.open(os.path.join("docs", "HISTORY.rst"),
 
 requires = [
     'setuptools',
-    'pytz',
     'zope.browserpage',
+    'zope.cachedescriptors',
+    'zope.component',
+    'zope.i18n[compile]',
+    'zope.i18nmessageid',
     'gs.profile.base',
     'Products.GSAuditTrail',
 ]
