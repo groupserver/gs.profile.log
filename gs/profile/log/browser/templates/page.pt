@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="gs.profile.log"
+  metal:use-macro="context/@@groupserver_layout/page">
+  <head>
+    <title metal:fill-slot="title" i18n:translate="page-title">
+      Activity log:
+      <span tal:replace="view/userInfo/name" i18n:name="userName"/>:
+      <span tal:replace="view/siteInfo/name" i18n:name="siteName"/>
+    </title>
+  </head>
+  <body>
+    <ul metal:fill-slot="breadcrumb">
+      <li>
+        <a href="/" class="icon-alone">
+          <span aria-hidden="true" data-icon="&#x2302;"></span>
+          <span class="screen-reader-text">Site home page</span>
+        </a>
+      </li>
+      <li>
+        <a href="#"
+           tal:attributes="href view/userInfo/url"
+           title="Profile"><b class="fn"
+                              tal:content="view/userInfo/name">Profile</b></a>
+      </li>
+      <li i18n:translate="activity-log">Activity log</li>
+    </ul>
+    <div metal:fill-slot="body"
+      tal:define="authenticated python:user.has_role('Authenticated')">
+      <h1 i18n:translate="activity-log">Activity log</h1>
+      <ul>
+        <tal:block repeat="event view/auditItems">
+          <li tal:content="structure event/xhtml">Stuff</li>
+        </tal:block>
+      </ul>
+    </div>
+  </body>
+</html>
