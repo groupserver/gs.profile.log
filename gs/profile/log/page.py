@@ -32,6 +32,7 @@ class AuditTrailView(ProfilePage):
 
     @property
     def auditItems(self):
+        '''Generator for the audit-event items'''
         rawItems = self.queries.get_instance_user_events(self.userInfo.id)
         for item in rawItems:
             if ((item['site_id'] == self.siteInfo.id) or (not item['site_id'])):
@@ -65,5 +66,5 @@ class AuditTrailView(ProfilePage):
     def get_groupInfo(self, gid):
         retval = None
         if gid:
-            retval = createObject('groupserver.GroupInfo', self.userInfo.user, gid)
+            retval = createObject('groupserver.GroupInfo', self.context, gid)
         return retval
