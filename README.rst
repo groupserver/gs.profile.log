@@ -20,13 +20,16 @@ Introduction
 ============
 
 GroupServer records events in the ``audit_event`` table
-[#audit]. This product provides the page ``log.html`` in the
+[#audit]_. This product provides the page ``log.html`` in the
 *profile* context that provides a view of these events for a
 person.
 
 Resources
 =========
 
+
+- Translations:
+  https://www.transifex.com/projects/p/gs-profile-log/
 - Code repository: https://github.com/groupserver/gs.profile.log
 - Questions and comments to
   http://groupserver.org/groups/development

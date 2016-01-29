@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[gs-profile-log.gs-profile-log-pot]
+file_filter = gs/profile/log/locales/<lang>/LC_MESSAGES/gs.profile.log.po
+source_file = gs/profile/log/locales/en/LC_MESSAGES/gs.profile.log.po
+source_lang = en
+type = PO
+
