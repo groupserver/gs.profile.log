@@ -61,13 +61,18 @@ class AuditItems(object):
 
     def get_userInfo(self, uid):
         # Cache, as we deal with so many user-infos.
-        retval = self.users.get(uid, createObject('groupserver.UserFromId', self.context, uid))
-        self.users[uid] = retval
+        if uid in self.users:
+            retval = self.users[uid]
+        else:
+            retval = createObject('groupserver.UserFromId', self.context, uid)
+            self.users[uid] = retval
         return retval
 
     def get_groupInfo(self, gid):
         retval = None
-        if gid:
-            retval = self.groups.get(gid, createObject('groupserver.GroupInfo', self.context, gid))
+        if (gid and (gid in self.groups)):
+            retval = self.groups[gid]
+        elif gid:
+            retval = createObject('groupserver.GroupInfo', self.context, gid)
             self.groups[gid] = retval
         return retval
