@@ -93,7 +93,7 @@ class TestAuditItems(TestCase):
         items = self.items.auditItems
 
         with self.assertRaises(StopIteration):
-             items.next()
+            items.next()
 
     @patch.object(AuditItems, 'queries', new_callable=PropertyMock)
     @patch.object(AuditItems, 'marshal_data')
@@ -126,5 +126,5 @@ class TestAuditItems(TestCase):
         items = self.items.auditItems
 
         with self.assertRaises(StopIteration):
-             items.next()
+            items.next()
         self.assertEqual(1, m_createObject.call_count)
