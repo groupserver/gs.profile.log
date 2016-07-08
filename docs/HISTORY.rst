@@ -1,6 +1,11 @@
  Changelog
 ==========
 
+1.0.1 (2016-07-08)
+------------------
+
+* Handling exceptions caused by missing audit-subsystems
+
 1.0.0 (2016-01-29)
 ------------------
 
