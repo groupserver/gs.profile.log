@@ -14,7 +14,7 @@
 ############################################################################
 from __future__ import absolute_import, unicode_literals, print_function
 from zope.cachedescriptors.property import Lazy
-from zope.component import createObject
+from zope.component import (createObject, ComponentLookupError, )
 from Products.GSAuditTrail import AuditQuery
 
 
@@ -38,8 +38,12 @@ class AuditItems(object):
         for item in rawItems:
             if ((item['site_id'] == self.siteInfo.id) or (not item['site_id'])):
                 newItem = self.marshal_data(item)
-                event = createObject(newItem['subsystem'], self.context, **newItem)
-                yield event
+                try:
+                    event = createObject(newItem['subsystem'], self.context, **newItem)
+                except ComponentLookupError:
+                    continue
+                else:
+                    yield event
 
     def marshal_data(self, data):
         if (type(data) != dict):
